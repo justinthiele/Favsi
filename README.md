@@ -1,6 +1,6 @@
-##Favsi.com: My first Rails app :)
+##Favsi.com: My First Rails App :)
 
-I finally got around to uploading this. I built this app to help myself learn during the summer of 2011.
+I built this app to help myself learn during the summer of 2011.
 
 Favsi is an app to create lists of *stuff* to share with friends.
 
