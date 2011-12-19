@@ -1,0 +1,97 @@
+/* @override http://localhost:3000/stylesheets/with-sidebar.css?1312687618 */
+
+/* @override http://localhost:3000/stylesheets/with-sidebar.css?1312334630 */
+
+
+
+body {
+  	/*-webkit-box-shadow: inset 0 0 175px 75px rgba(0,0,0, .1);
+  	  -moz-box-shadow: inset 0 0 175px 75px rgba(0,0,0, .1);*/
+}
+
+html {
+	margin: 0px;
+	padding: 0px;
+	background: url(../images/background-alt.png) repeat-x, url(../images/bg-blue.gif) repeat rgba(0,165,197, 1);
+}
+
+nav{
+  	width: 812px;
+}
+
+#wrapper {
+  width: 812px;
+}
+
+#content {
+  background-color: none;
+  padding: 0px 0px 0px 0px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  clear: both;
+}
+
+
+#content-left {
+  background-color: #FFF;
+  padding: 0px 20px 40px 20px;
+  border-radius: 0px 0px 5px 5px;
+  -moz-border-radius: 0px 0px 5px 5px;
+  -webkit-border-radius: 0px 0px 5px 5px;
+  width: 510px;
+  float: left;
+  margin: 0 0 25px 25px;
+}
+
+
+#pointy img  {
+  background-color: none;
+  padding: 0;
+  margin: 0 0 0 0px;
+  float: left;
+}
+
+
+#sidebar-right {
+  background-color: none;
+  padding: 0px 0px 0px 15px;
+  width: 185px;
+  float: right;
+}
+
+#author-avatar img {
+  border-radius: 5px 5px 5px 5px;
+  -moz-border-radius: 5px 5px 5px 5px;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  margin-top: 25px;
+   -webkit-box-shadow: 0px 0px 2px rgba(0,0,0,.3);
+  	/*-webkit-box-shadow: 0px 1px 2px #A4D7EE;*/
+	-moz-box-shadow: 0px 0px 2px rgba(0,0,0,.3);
+  	box-shadow: 0px 0px 2px rgba(0,0,0,.3);
+}
+
+#author-username a {
+	font-family: 'Rokkitt', serif;
+	font-size: 34px;
+	color: #414141;
+	text-shadow: 0px 1px 2px #A4D7EE;
+}
+
+#author-info a {
+	color: #414141;
+}
+
+
+#author-info p {
+	color: white;
+}
+
+/*#footer {
+	background-color: #666;
+}*/
+
+
+#footer-content {
+	width: 812px;
+}
+

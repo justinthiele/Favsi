@@ -1,0 +1,23 @@
+"I made this!" - Justin Thiele
+
+This is my first ever development project.
+
+== Arigato! Seriously. ==
+
+Huge thank you to the gazillions of shoulders I stood on while trying to learn and patch an app together.
+
+Ruby on Rails
+Heroku
+StackOverflow
+GitHub
+RailsCasts
+Beginning Rails 3 book
+PeepCode
+HackerNews
+SendGrid
+Embedly
+Omni-Auth
+Devise
+Carrierwave
+Amazon AWS
+etc, etc, etc

@@ -1,0 +1,19 @@
+<div class="fields">
+  <li>
+	<span class="item-input">
+		<%= f.text_field :body, :class => 'indiv_item', :size => "40x1" %>
+	</span>
+  	<span class='options-icon' title='Add a link'><%= image_tag("link.png", :size => "18x18")%></span>
+   	<span class='options-icon' title='Remove item'><%= link_to_remove_fields image_tag("delete.png", :size => "16x16"), f %></span>
+	<div id="clear_floats"></div>
+	
+  <div class="item_options">
+	<label class="input" id="link" title="We'll automatically embed linked videos and photos. Pretty sweet.">
+		<span><%= f.label :url, "Link " %></span>
+		<%= f.text_field :url, :size => "37x1" %>
+	</label>
+  </div>
+<div id="clear_floats"></div>
+
+  </li>
+</div>

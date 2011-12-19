@@ -1,0 +1,23 @@
+<%= content_for :title, "Favsi - Browse Users" %>
+
+<h1>Browse Users</h1>
+
+<% @users.each do |user| %>
+	<div id="newest-list-item">
+
+		<div id="sm-author-avatar"><%= image_tag sm_avatar_url(user) %></div>
+
+    	<p><strong><%= link_to user.username, user %></strong><br />
+	Newest Lists:
+    	<ul><% user.lists.order("id DESC").limit(3).each do |list| %>
+	  		<li><%= link_to list.title, user_list_path(user, list) %></li>
+		<% end %>
+		</ul></p>
+	</div>
+<% end %>
+
+
+<%= paginate @users %>
+
+<p>&nbsp;</p>
+<%= link_to "« Back", :back %>

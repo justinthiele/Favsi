@@ -1,0 +1,71 @@
+/* @override http://localhost:3000/stylesheets/labels.css?1307155744 */
+
+/* @override http://localhost:3000/stylesheets/labels.css?1307077996 */
+
+/* @override http://localhost:3000/stylesheets/labels.css?1306989006 */
+
+/* @override http://localhost:3000/stylesheets/labels.css?1306985489 */
+
+/* @override http://localhost:3000/stylesheets/labels.css?1306983377 */
+
+.input, .item-input {
+  margin: 5px 0;
+  background: white;
+  float: left;
+  clear: both;
+}
+
+.item-input {
+	float: none;
+}
+
+.input span, .item-input span {
+  position: absolute;
+  padding: 5px;
+  margin-left: 3px;
+  color: #999;
+}
+
+
+.input input, .input textarea, .input select {
+  position: relative;
+  margin: 0 0 0 0;
+  border-width: 1px;
+  padding: 6px;
+  background: transparent;
+  font: inherit;
+  clear: both;
+}
+
+ol#items {
+ font-size: 16px;
+ margin-left: 15px;
+ color: #999;
+}
+
+.item-input input, .item-input textarea, .item-input select {
+  position: relative;
+  margin: 0 0 0 -35px;
+  border-width: 1px;
+  padding: 6px 6px 6px 30px;
+  background: transparent;
+  font: inherit;
+}
+
+#new_list div.add_description a {
+	padding: 15px 0 0 0;
+	display: block;
+	font-size: 16px;
+}
+
+div.item_options {
+	margin: 5px 0 0 -35px;
+}
+
+#add_items_link a {
+  margin: 5px 0 0 -55px;
+
+}
+
+
+

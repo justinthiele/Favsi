@@ -1,0 +1,88 @@
+<%= content_for :title, "Favsi - Edit Profile" %>
+<%= content_for :head do %>
+  <%= include_stylesheets :sidebar %>
+<% end %>
+
+<div id="content-left">
+
+<h1>Edit Profile: <%= @user.username %></h1>
+
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :multipart => true }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+	<label class="input" id="edit-profile" title="Username">
+	    <span><%= f.label :username %></span>
+    	<%= f.text_field :username %>
+	</label>
+  </div>
+  
+  <div class="field">
+	<label class="input" id="edit-profile" title="Email">
+	    <span><%= f.label :email %></span>
+    	<%= f.email_field :email %>
+	</label>
+  </div>
+
+  <div class="field">
+	<label class="input" id="edit-profile" title="Name">
+	    <span><%= f.label :name, "Name:" %></span>
+    	<%= f.text_field :name %>
+	</label>
+  </div>
+
+  <div class="field">
+	<label class="input" id="edit-profile" title="Homepage">
+	    <span><%= f.label :homepage, "Homepage:" %></span>
+    	<%= f.text_field :homepage %>
+	</label>
+  </div>
+
+  <div class="field">
+	<label class="input" id="edit-profile" title="Bio">
+	    <span><%= f.label :bio %></span>
+    	<%= f.text_area :bio, :rows => "5" %>
+	</label>
+  </div>
+
+  <div class="field">
+	<label class="input" id="edit-profile" title="Pro tip: Try a picture of yourself in the bathroom mirror showing off your abs.">
+	    <span><%= f.label :avatar, "Avatar:" %></span>
+    	<%= f.file_field :avatar %>
+	</label>
+	<div id="clear_floats"></div>
+	<%= image_tag @user.avatar_url(:med_avatar) unless @user.avatar_url(:med_avatar).nil?%>
+  </div>
+	
+	<div id="clear_floats"></div>
+	
+	<%= f.submit "Update Profile", :class => "css3button" %>
+<% end %>
+
+
+<p>&nbsp;</p>
+<%= link_to "« Back", :back %>
+
+</div>
+
+<div id="pointy"><%= image_tag "pointy.png" %></div>
+
+<div id="sidebar-right">
+		<div id="author-avatar"><%= link_to image_tag(avatar_url(current_user)), current_user %></div>
+		
+		<div id="author-username">		
+			<%= if current_user.name.blank?
+					link_to current_user.username, current_user
+				else
+					 link_to current_user.name, current_user
+				end
+			%>
+		</div>
+		<div id="author-info">
+			<p><strong>Homepage:</strong><br /><%= link_to current_user.homepage, "#{current_user.homepage}", :rel => 'nofollow' unless current_user.homepage.blank?%></p>
+			<p><strong>Bio:</strong><br /><%= current_user.bio unless current_user.bio.blank? %></p>
+
+  				<p><%= link_to 'Edit Profile', edit_user_registration_path %></p>
+		</div>	
+</div>

@@ -1,0 +1,47 @@
+<%= content_for :title, "Favsi - Share lists of awesome stuff with friends." %>
+<%= content_for :head do %>
+  <%= include_stylesheets :front %>
+<% end %>
+
+<div id="spokesman">
+	<div id="blinkymonster_hype_container" style="position:relative;overflow:hidden;width:338px;height:820px;">
+		<script type="text/javascript" src="blinky_monster_Resources/blinkymonster_hype_generated_script.js?36251"></script>
+	</div>	
+</div>
+
+<div id="top">
+<div id="headlines">
+<h1>Favsi is a place to make lists of fun and random stuff.</h1>
+<hr><h2>Make your first list. Here's some suggestions:</h2>
+
+</div>
+<div id="fp-list-form"><%= render 'front-page-form' %></div>
+<div id="clear_floats"></div>
+</div>
+
+<div id="bottom">
+	
+<div id="newest-lists">
+<h2>Newest Lists</h2>
+
+  <% @lists.each do |list| %>
+	<div id="newest-list-item">
+		<div id="sm-author-avatar"><%= image_tag sm_avatar_url(list.user) %></div>
+    	<p><strong><%= link_to list.title, user_list_path(list.user, list) %></strong> by <%= link_to list.user.username, list.user %><br />
+<% if list.tag_list.present? %>Tags: <% for tag in list.tags %><%= link_to tag.name, tag_path(tag) %>, <% end %><% end %></p>
+	</div>
+  <% end %>
+
+  <div id="browse-more"><%= link_to "Browse More Lists", lists_path %></div>
+</div>
+
+<div id="browse_tags_cloud">
+<h2>Browse By Tags</h2>
+<% tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class| %>
+  <%= link_to tag.name, tag_path(tag), :class => css_class %>
+<% end %>
+</div>
+
+<div id="clear_floats"></div>
+
+</div>

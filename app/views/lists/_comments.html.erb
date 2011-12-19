@@ -1,0 +1,15 @@
+<div id="comments">
+<h2>Comments</h2>
+
+<div class="comment_list">
+<% for comment in @list.comments %>
+  <div class="comment">
+    <%=simple_format comment.body %>
+  </div>
+<% end %>
+</div>
+
+<%= render 'new_comment' %> 
+
+</div>
+

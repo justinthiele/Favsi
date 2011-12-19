@@ -1,0 +1,38 @@
+<%= content_for :title, "Favsi - New List" %>
+<%= content_for :head do %>
+  <%= include_stylesheets :sidebar %>
+<% end %>
+
+<div id="content-left">
+	<div id="new_list_heading"><h1>New list</h1></div>
+	<div id="suggestions"><a href="http://favsi.com/list_suggestions.html?keepThis=true&TB_iframe=true&height=300&width=500" title="List Ideas" class="thickbox">Stumped? Here's some list ideas.</a></div>
+
+	<%= render 'form' %>
+
+    <p>&nbsp;</p>
+	<%= link_to "« Back", :back %>
+</div>
+
+
+<div id="pointy"><%= image_tag "pointy.png" %></div>
+
+<div id="sidebar-right">
+		<div id="author-avatar"><%= link_to image_tag(avatar_url(current_user)), current_user %></div>
+		
+		<div id="author-username">		
+			<%= if current_user.name.blank?
+					link_to current_user.username, current_user
+				else
+					 link_to current_user.name, current_user
+				end
+			%>
+		</div>
+		<div id="author-info">
+			<p><strong>Homepage:</strong><br /><%= link_to current_user.homepage, "#{current_user.homepage}", :rel => 'nofollow' unless current_user.homepage.blank?%></p>
+			<p><strong>Bio:</strong><br /><%= current_user.bio unless current_user.bio.blank? %></p>
+
+  				<p><%= link_to 'Edit Profile', edit_user_registration_path %></p>
+		</div>	
+</div>
+
+

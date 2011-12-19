@@ -1,0 +1,9 @@
+<h2>New Comment</h2>
+
+<% form_for [@list, @list.comments.new] do |f| %>
+  <p>
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </p>
+  <p><%= f.submit "Submit", :class => "css3button" %></p>
+<% end %>

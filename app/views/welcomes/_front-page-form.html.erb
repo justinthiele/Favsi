@@ -1,0 +1,49 @@
+<%= form_for @newlist, :html => {:multipart => true} do |f| %>
+  <% if @newlist.errors.any? %>
+    <div id="error_explanation">
+      <h2>Correct the <%= pluralize(@newlist.errors.count, "thing") %> below:</h2>
+
+      <ul>
+      <% @newlist.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+	<label class="input">
+     	<%= f.select(:title, [
+	   		["Favorite Toys When You Were A Kid"],
+	   		["Favorite Cheesy 80's Movies"],
+	   		['Favorite Songs To Sing In The Car'],
+	   		['Favorite Quotes'],
+	   		['Favorite School Cafeteria Foods'],
+	   		['Most Embarrassing Albums You Love'],
+	   		['Favorite Original Nintendo Games'],
+	   		['Favorite Time Wasters'],
+	   		['Favorite Salad Toppings'],
+	   		['Favorite Books As A Kid'],
+	   		['Toys You Wanted But Never Got'],
+	   		['Favorite Days Of The Year']
+	   	] ) %>
+	</label>
+  </div>
+<div id="clear_floats"></div>
+  <ol id="items">
+  <% @rank = 0 %>
+  <%= f.fields_for :items do |builder| %>
+	<%= render 'item_fields', :f => builder %>
+  <% end %>
+  </ol>
+
+
+
+<div id="clear_floats"></div>
+
+<%= f.submit :class => "front-page-button" %>
+
+  <div class="or-signup">or just <%= link_to "sign up", new_user_registration_path %></div>
+
+
+<% end %>

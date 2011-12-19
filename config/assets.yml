@@ -1,0 +1,29 @@
+
+javascripts:
+  common:
+    - public/javascripts/rails.js
+    # public/javascripts/jquery.min.js
+    # public/javascripts/jquery-ui.min.js
+    - public/javascripts/application.js
+    - public/javascripts/jquery.ae.image.resize.js
+    # public/javascripts/rails.validations.js
+    - public/javascripts/labels.js
+    - public/javascripts/jrumble.1.1.min.js
+    - public/javascripts/jquery.tipsy.js
+    - public/javascripts/thickbox.js
+    
+    
+
+
+stylesheets:
+  common:
+    - public/stylesheets/application.css
+    - public/stylesheets/labels.css
+    - public/stylesheets/tipsy.css
+
+  sidebar:
+    - public/stylesheets/with-sidebar.css
+    - public/stylesheets/thickbox.css
+
+  front:
+    - public/stylesheets/front-page.css

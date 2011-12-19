@@ -1,0 +1,58 @@
+<%= content_for :title, "About Favsi" %>
+
+<%= content_for :head do %>
+  <%= include_stylesheets :sidebar %>
+<% end %>
+
+
+<div id="content-left">
+	
+<h1>About Favsi</h1>
+
+<p>Hey, how's it going?</p>
+
+<p>I'm Justin Thiele. Favsi is a place where you can share lists of stuff with friends. These could be lists of anything, but I always like topics that are pretty random and fun. Here's a few examples:</p>
+
+<ul>
+	<li>Favorite cheesy ninja movies</li>
+	<li>Favorite salad toppings</li>
+	<li>Embarrassing albums you liked in high school</li>
+</ul>
+
+<p>I made Favsi as my very first development project. By trade I'm a product-ish, community-ish, UX-ish, marketing-ish guy, and had no idea how to code (beyond rudimentary CSS/HTML/WordPress hacking). I've been working on learning Ruby (and Rails) for quite awhile, so Favsi really helped me learn the intricacies of putting a product together. I couldn't have done it without tons of people. So <a href="http://favsi.com/justinthiele/thank-you-seriously">thank you, seriously</a>.</p>
+
+<p>Previously I worked on some other pretty cool stuff too: <a href="http://gadgettrak.com">GadgetTrak</a>, <a href="http://mugasha.com">Mugasha</a>, <a href="http://appsumo.com">AppSumo</a>, <a href="http://inkblotrobot.com">Inkblot Robot</a>, etc.</p>
+
+Oh, and you can <a href="mailto:justin@favsi.com">email me</a>.
+
+<h2>Here's this stuff:</h2>
+
+<p><strong>Privacy Policy:</strong><br />
+We don't do anything scammy. We won't spam or sell your email address. The content you post is public. That's kind of the point.</p>
+
+<p><strong>Terms Of Use:</strong><br />
+Play it cool. Don't do anything shady.</p>
+
+</div>
+
+<!-- The Pointy Thing -->
+<div id="pointy"><%= image_tag "pointy.png" %></div>
+
+
+<!-- The Sidebar -->
+<div id="sidebar-right">
+		<% @me = User.find(12) %>
+		<div id="author-avatar"><%= link_to image_tag(avatar_url(@me)), @me %></div>
+	
+		<div id="author-username">		
+			<%= link_to @me.name, @me %>
+		</div>		
+		<div id="author-info">
+			<p><strong>Homepage:</strong><br /><%= link_to @me.homepage, "#{@me.homepage}", :rel => 'nofollow' unless @me.homepage.blank? %></p>
+			<p><strong>Bio:</strong><br /><%= @me.bio unless @me.bio.blank? %></p>
+
+			<% if @me == current_user %>
+  				<p><%= link_to 'Edit Profile', edit_user_registration_path %></p>
+			<% end %>
+		</div>	
+</div>

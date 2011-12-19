@@ -1,0 +1,69 @@
+--- 
+common: 
+  error_collector: &id001 
+    capture_source: true
+    enabled: true
+    ignore_errors: ActionController::RoutingError
+  apdex_t: 0.5
+  ssl: false
+  monitor_mode: true
+  license_key: <%= license_key %>
+  browser_monitoring: &id002 
+    auto_instrument: true
+  developer_mode: false
+  app_name: <%= @app_name %>
+  transaction_tracer: &id003 
+    record_sql: obfuscated
+    enabled: true
+    stack_trace_threshold: 0.5
+    transaction_threshold: apdex_f
+  capture_params: false
+  log_level: info
+development: 
+  apdex_t: 0.5
+  error_collector: *id001
+  license_key: Key
+  monitor_mode: false
+  ssl: false
+  app_name: <%= @app_name %>
+  developer_mode: true
+  browser_monitoring: *id002
+  transaction_tracer: *id003
+  log_level: info
+  capture_params: false
+production: 
+  apdex_t: 0.5
+  error_collector: *id001
+  license_key: Key
+  monitor_mode: true
+  ssl: false
+  app_name: freezing-dawn-540
+  developer_mode: false
+  browser_monitoring: *id002
+  transaction_tracer: *id003
+  log_level: info
+  capture_params: false
+test: 
+  apdex_t: 0.5
+  error_collector: *id001
+  license_key: <%= license_key %>
+  monitor_mode: false
+  ssl: false
+  app_name: <%= @app_name %>
+  developer_mode: false
+  browser_monitoring: *id002
+  transaction_tracer: *id003
+  log_level: info
+  capture_params: false
+staging: 
+  apdex_t: 0.5
+  error_collector: *id001
+  license_key: <%= license_key %>
+  monitor_mode: true
+  ssl: false
+  app_name: <%= @app_name %> (Staging)
+  developer_mode: false
+  browser_monitoring: *id002
+  transaction_tracer: *id003
+  log_level: info
+  capture_params: false

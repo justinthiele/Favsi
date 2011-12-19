@@ -1,0 +1,22 @@
+/* @override http://localhost:3000/stylesheets/front-page.css?1310966815 */
+
+html {
+	margin: 0px;
+	padding: 0px;
+	background: url(../images/clouds.png) repeat-x, url(../images/background.png) repeat-x #4D4D4D;
+	background-position: -80px 0;
+}
+
+#header {
+	float: right;
+}
+
+#content {
+
+  clear: both;
+  background-color: rgba(0,0,0, 0);
+  padding: 0;
+  border-radius: 0;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+}

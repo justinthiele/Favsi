@@ -1,0 +1,64 @@
+<%= content_for :title, "Favsi - Join for free and share lists of awesome stuff with friends." %>
+<h1>Sign Up</h1>
+
+<div id="auth">
+<div id="standard_auth">
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+	<label class="input">
+	    <span><%= f.label :username %></span>
+    	<%= f.text_field :username %>
+	</label>
+  </div>
+
+  <div class="field">
+	<label class="input">
+	    <span><%= f.label :email %></span>
+    	<%= f.email_field :email %>
+	</label>
+  </div>
+
+<% if @user.password_required? %>
+  <div class="field">
+	<label class="input">
+	    <span><%= f.label :password %></span>
+    	<%= f.password_field :password %>
+	</label>
+  </div>
+
+  <div class="field">
+	<label class="input">
+	    <span><%= f.label :password_confirmation %></span>
+    	<%= f.password_field :password_confirmation %>
+	</label>
+  </div>
+
+<% end %>
+
+<div id="clear_floats"></div>
+
+  <p><%= f.submit "Sign up", :class => "css3button" %></p>
+
+
+<%= render :partial => "devise/shared/links" %>
+</div>
+
+
+<div id="external_auth">
+  <p><strong>Or sign up with one of these:</strong></p>
+  <p>
+  <a href="/auth/facebook"><%= image_tag "sign-in-with-facebook.png", :size => "151x24", :alt => "Sign up with Facebook" %></a>
+  </p>
+  <p>
+  <a href="/auth/twitter"><%= image_tag "sign-in-with-twitter.png", :size => "151x24", :alt => "Sign up with Twitter" %></a>
+  </p>
+</div>
+</div>
+
+<div id="clear_floats"></div>
+
+<% end %>
+
+

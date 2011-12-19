@@ -1,0 +1,59 @@
+<%= content_for :title, "#{@user.username} on Favsi" %>
+
+<%= content_for :head do %>
+  <%= include_stylesheets :sidebar %>
+<% end %>
+
+
+<div id="content-left">
+
+<h1><%= @user.username %>'s Lists</h1>
+
+<div id="lists">
+<% @lists.each do |list| %>
+	<div id="newest-list-item">
+
+	<div id="sm-author-avatar"><%= image_tag sm_avatar_url(list.user) %></div>
+    <p><strong><%= link_to list.title, user_list_path(list.user, list) %></strong><br />Published: <%= list.updated_at.strftime("%B %d, %Y")%><br /><% if list.tag_list.present? %>Tags: <% for tag in list.tags %><%= link_to tag.name, tag_path(tag) %>, <% end %><% end %></p>
+
+
+	</div>
+<% end %>
+</div>
+
+<div id="clear_floats"></div>
+<%= paginate @lists %>
+
+
+
+<p>&nbsp;</p>
+<%= link_to "« Back", :back %>
+
+</div>
+
+
+<div id="pointy"><%= image_tag "pointy.png" %></div>
+
+<div id="sidebar-right">
+		<div id="author-avatar"><%= link_to image_tag(avatar_url(@user)), @user %></div>
+	
+		<div id="author-username">		
+			<%= if @user.name.blank?
+					link_to @user.username, @user
+				else
+					 link_to @user.name, @user
+				end
+			%>
+		</div>		
+		<div id="author-info">
+			<p><strong>Homepage:</strong><br /><%= link_to @user.homepage, "#{@user.homepage}", :rel => 'nofollow' unless @user.homepage.blank?%></p>
+			<p><strong>Bio:</strong><br /><%= @user.bio unless @user.bio.blank?%></p>
+
+			<% if @user == current_user %>
+  				<p><%= link_to 'Edit Profile', edit_user_registration_path %></p>
+			<% end %>
+		</div>	
+</div>
+
+
+

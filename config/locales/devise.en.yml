@@ -1,0 +1,48 @@
+# Additional translations at http://github.com/plataformatec/devise/wiki/I18n
+
+en:
+  errors:
+    messages:
+      not_found: "not found"
+      already_confirmed: "was already confirmed, please try signing in"
+      not_locked: "was not locked"
+      not_saved:
+        one: "Correct the 1 thing below:"
+        other: "Correct the %{count} things below:"
+
+  devise:
+    failure:
+      unauthenticated: 'Hi there, please login or sign up before continuing.'
+      unconfirmed: 'You have to confirm your account before continuing.'
+      locked: 'Your account is locked.'
+      invalid: 'Woops, invalid username or password.'
+      invalid_token: 'Invalid authentication token.'
+      timeout: 'Looks like your session expired. Sign in again to continue.'
+      inactive: 'Your account was not activated yet.'
+    sessions:
+      signed_in: 'Signed in. Hi.'
+      signed_out: 'Signed out. See ya later.'
+    passwords:
+      send_instructions: "Ok, cool. You'll get an email in a sec."
+      updated: "Nice. Your password is updated. You're now signed in."
+    confirmations:
+      send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
+      confirmed: 'Your account was successfully confirmed. You are now signed in.'
+    registrations:
+      signed_up: "Awesome, you're all signed up."
+      inactive_signed_up: 'You have signed up successfully. However, we could not sign you in because your account is %{reason}.'
+      updated: 'Nice. Successfully updated your account.'
+      destroyed: 'Aww, boo. Hope to see you again soon :)'
+    unlocks:
+      send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
+      unlocked: 'Your account was successfully unlocked. You are now signed in.'
+    omniauth_callbacks:
+      success: 'Successfully authorized from %{kind} account.'
+      failure: 'Could not authorize you from %{kind} because "%{reason}".'
+    mailer:
+      confirmation_instructions:
+        subject: 'Confirmation instructions'
+      reset_password_instructions:
+        subject: 'Favsi Password Reset'
+      unlock_instructions:
+        subject: 'Unlock Instructions'

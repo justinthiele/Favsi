@@ -1,0 +1,28 @@
+<%= content_for :title, "Favsi - Change Password" %>
+<h2>Change Password</h2>
+
+<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+  <%= devise_error_messages! %>
+  <%= f.hidden_field :reset_password_token %>
+
+  <div class="field">
+	<label class="input">
+	    <span><%= f.label :password, "New password" %></span>
+    	<%= f.password_field :password %>
+	</label>
+  </div>
+
+  <div class="field">
+	<label class="input">
+	    <span><%= f.label :password_confirmation, "Confirm new password" %></span>
+    	<%= f.password_field :password_confirmation %>
+	</label>
+  </div>
+
+<div id="clear_floats"></div>
+
+
+  <p><%= f.submit "Change my password", :class => "css3button" %></p>
+<% end %>
+
+<%= render :partial => "devise/shared/links" %>

@@ -1,0 +1,59 @@
+xml.instruct!
+xml.urlset "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
+
+  xml.url do
+    xml.loc root_url
+    xml.priority 1.0
+  end
+
+  xml.url do
+    xml.loc lists_url
+    xml.priority 1.0
+  end
+  
+  xml.url do
+    xml.loc users_url
+    xml.priority 1.0
+  end
+
+
+  @users.each do |user|
+    xml.url do
+      xml.loc user_url(user)
+      xml.priority 0.9
+    end
+
+    user.lists.each do |list|
+      xml.url do
+        xml.loc user_list_url(user, list)
+        xml.lastmod list.updated_at.to_date
+        xml.priority 0.8
+      end
+    end
+  end
+
+
+  xml.url do
+    xml.loc tags_url
+    xml.priority 0.9
+  end
+
+  @tags.each do |tag|
+    xml.url do
+      xml.loc tag_url(tag)
+      xml.priority 0.8
+    end
+  end
+  
+  xml.url do
+    xml.loc about_url
+    xml.priority 0.5
+  end
+  
+  xml.url do
+    xml.loc search_url
+    xml.priority 0.5
+  end
+
+  
+end

@@ -1,0 +1,51 @@
+<%= form_for @list, :html => {:multipart => true} do |f| %>
+  <% if @list.errors.any? %>
+    <div id="error_explanation">
+      <h2>Correct the <%= pluralize(@list.errors.count, "thing") %> below:</h2>
+
+      <ul>
+      <% @list.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+	<label class="input">
+	    <span><%= f.label :title %></span>
+    	<%= f.text_field :title, :size => "50x1" %>
+	</label>
+  </div>
+<div id="clear_floats"></div>
+  <div class='add_description'><a href='/'><%= image_tag("add.png", :size => "16x16")%> Add Description</a></div>
+
+  <div class="description_field">
+	<label class="input">
+    	<span><%= f.label :description %></span>
+    	<%= f.text_area :description, :size => "50x8" %>
+	</label>
+  </div>
+<div id="clear_floats"></div>
+	<h2>Items</h2>
+  <ol id="items">
+  <% @rank = 0 %>
+  <%= f.fields_for :items do |builder| %>
+	<%= render 'item_fields', :f => builder %>
+  <% end %>
+  <p id="add_items_link"><%= link_to_add_fields image_tag("add.png", :size => "16x16") + " Add Item", f, :items %></p>
+  </ol>
+
+  <div class="field">
+	<label class="input">
+	    <span><%= f.label :tag_list, "Tags (seperated by commas)" %></span>
+    	<%= f.text_field :tag_list, :size => "50x1" %>
+	</label>
+  </div>
+
+<div id="clear_floats"></div>
+
+  <div class="actions">
+    <%= f.submit :class => "css3button" %>
+  </div>
+<% end %>

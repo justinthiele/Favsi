@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= yield(:title) %></title>
+  <%= include_stylesheets :common %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/jquery-ui.min.js" type="text/javascript"></script>
+  <%= include_javascripts :common %>
+  <link href='http://fonts.googleapis.com/css?family=Rokkitt&v2' rel='stylesheet' type='text/css'>
+
+  <%= csrf_meta_tag %>
+  <%= yield :head %>
+  <meta name="keywords" http-equiv="keywords" content="Lists, Top 5, Top 10, Favorite, Best, List, Awesome, Number 1, five, ten, music, movies, books"/>
+  <meta name="description" http-equiv="description" content="Favsi is a place to make lists of fun and random stuff."/>
+  <meta property="og:title" content="Favsi" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="http://favsi.com" />
+  <meta property="og:image" content="http://favsi.com/favsi-logo.png" />
+  <meta property="og:site_name" content="Favsi" />
+  <meta property="fb:admins" content="1172507182" />
+  <meta property="fb:app_id" content="211726715506317">
+
+
+
+</head>
+<body>
+	
+<div id="nav_bar">	
+	<nav>
+		<ul class="left_share">
+		<li id="tweet"><a href="http://twitter.com/share" class="twitter-share-button"
+		      data-url="http://favsi.com"
+			  data-count="none"
+		      data-via="Favsi"
+		      data-text="Favsi: share lists of awesome stuff with friends."
+		      data-related="Favsi:Share lists of awesome stuff with friends.">Tweet</a></li>	
+		 <li id="like"><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="http://favsi.com" send="false" layout="button_count" width="150" height="21" show_faces="false"></fb:like></li>
+	  </ul>
+		
+	  <ul class="right_account">
+		  <% if user_signed_in? %>
+		    <li><%= link_to current_user.username, current_user %> | 
+		    <%= link_to "Edit Profile", edit_user_registration_path %> | 
+		    <%= link_to "Sign Out", destroy_user_session_path %></li>
+		  <% else %>
+		    <li><%= link_to "Sign Up", new_user_registration_path %> |
+		    <%= link_to "Login", new_user_session_path %></li>
+		  <% end %>
+		</ul>
+		
+		<div id="new_list_nav"><hr><%= link_to image_tag("plus.png", :size => "14x14") + " New List", new_list_path %><hr></div>
+			
+	</nav>
+</div>
+
+<div id="wrapper">
+	<div id="header">
+		<div id="logo"><a href="/"><%= image_tag "favsi-logo.png", :size => "155x76", :alt => "Favsi Logo - Homepage" %></a></div>
+		<tagline>A place to share lists of awesome stuff with friends.</tagline>
+		<div id="clear_floats"></div>
+		<div id="notice-bar">
+	  	<%= content_tag(:p, notice, :class => 'notice') if notice.present? %>
+      	<%= content_tag(:p, alert, :class => 'alert') if alert.present? %>
+		</div>
+	</div>
+	<div id="content">
+	  
+	<%= yield %>
+	
+	</div>
+	
+</div>
+
+
+<div id="footer">
+	<div id="footer-content">
+	<p>Made for fun by <a href="http://twitter.com/justinthiele">me</a>. Why not learn more <%= link_to "about Favsi", about_path %> or <a href="mailto:justin@favsi.com">say hi</a>? Also a huge <a href="http://favsi.com/justinthiele/thank-you-seriously">thank you, seriously</a>.
+	</div>
+</div>
+
+
+
+<!-- Lotsa Javascripts to follow -->
+
+<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+
+<!-- jRumble -->
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#logo').jrumble({
+		rangeX: 2,
+		rangeY: 2,
+		rangeRot: 1,
+		rumbleSpeed: 40,
+	});
+});
+</script>
+
+
+<!-- Start of Google Analytics Code -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-23663348-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<!-- End of Google Analytics Code -->
+
+
+<!-- Start of Woopra Code -->
+<script type="text/javascript">
+var woo_settings = {idle_timeout:'300000', domain:'favsi.com'};
+(function(){
+var wsc = document.createElement('script');
+wsc.src = document.location.protocol+'//static.woopra.com/js/woopra.js';
+wsc.type = 'text/javascript';
+wsc.async = true;
+var ssc = document.getElementsByTagName('script')[0];
+ssc.parentNode.insertBefore(wsc, ssc);
+})();
+</script>
+<!-- End of Woopra Code -->
+
+
+<!-- Start SnapEngage Code -->
+<script type="text/javascript">
+document.write(unescape("%3Cscript src='" + ((document.location.protocol=="https:")?"https://snapabug.appspot.com":"http://www.snapengage.com") + "/snapabug.js' type='text/javascript'%3E%3C/script%3E"));</script><script type="text/javascript">
+SnapABug.addButton("4d5c4dba-4258-4a8d-bd19-0ac2f7bfc922","1","55%");
+</script>
+<!-- End SnapEngage Code -->
+
+
+</body>
+</html>

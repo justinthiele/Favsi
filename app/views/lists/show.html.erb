@@ -1,0 +1,125 @@
+<%= content_for :title, "Favsi - #{@list.user.username}: #{@list.title}" %>
+<%= content_for :head do %>
+  <%= include_stylesheets :sidebar %>
+  <script src="http://scripts.embed.ly/jquery.embedly.min.js"></script>
+  
+  <script>
+    $(function() {
+      $( ".resizeme" ).aeImageResize({ height: 350, width: 490 }).css("display", "inline");
+    });
+  </script>
+
+<!-- embedly settings -->
+  <script type="text/javascript">
+    $('document').ready(function(){
+      $('ol#show_items').embedly({
+        maxWidth: 490,
+        wmode: 'transparent',
+        method: 'after',
+        key:'MyKey'
+      });
+    });
+  </script>
+
+<% end %>
+
+<div id="content-left">
+<h1><%= @list.title %></h1>
+<div class="share_buttons">
+	<div id="tweet_body"><a href="http://twitter.com/share" class="twitter-share-button"
+		      data-url="<%= list_url %>"
+		      data-via="Favsi"
+			  data-count="none"
+		      data-text="'<%= @list.title %>' by <%= @list.user.username %>"
+		      data-related="Favsi:Share lists of awesome stuff with friends.">Tweet</a></div>	
+	 <div id="like_body"><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="<%= list_url %>" send="true" layout="button_count" show_faces="false"></fb:like></div>
+</div>
+
+
+
+
+
+<p>
+	<% if @list.owned_by? current_user %>
+	<%= link_to 'Edit', edit_list_path(@list) %> | 
+    <%= link_to 'Delete', @list, :confirm => 'Are you sure?', :method => :delete %><br />
+	<% end %>
+	 <% if @list.tag_list.present? %>
+		<strong> Tags:</strong> <% for tag in @list.tags %><%= link_to tag.name, tag_path(tag) %>, 
+	 <% end %>
+	
+	<% end %>	
+</p>
+<p>
+<%= simple_format raw(@list.description) %>
+</p>
+
+<ol id="show_items">
+	<% for item in @list.items %>
+		<li><p><%= item.body %><br />
+			<%= isimage = item.url =~ /.*(jpg|jpeg|png|gif)$/
+				if isimage.nil?
+					link_to "link", item.url, :rel => 'nofollow' unless item.url.blank?
+				else
+					image_tag(item.url, :class => "resizeme")
+				end
+			%></p></li>
+	<% end %>
+</ol>
+<strong>Published on:</strong> <%= @list.updated_at.strftime("%B %d, %Y") %> 	
+<hr>
+
+<%= render 'show-page-form' %>
+
+
+<div id="comments">
+<!-- <h2>Comments</h2> -->
+
+<!-- disqus comments -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'favsi'; 
+    var disqus_identifier = '<%= @list.id %>';
+    var disqus_url = '<%= list_url %>';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view comments.</a></noscript>
+<!-- end disqus comments -->
+
+</div> 
+
+<p>&nbsp;</p>
+<%= link_to "« Back", :back %>
+
+</div>
+
+<div id="pointy"><%= image_tag "pointy.png" %></div>
+
+<div id="sidebar-right">
+		<div id="author-avatar"><%= link_to image_tag(avatar_url(@list.user)), @list.user %></div>
+		
+		
+		<div id="author-username">		
+			<%= if @list.user.name.blank?
+					link_to @list.user.username, @list.user
+				else
+					 link_to @list.user.name, @list.user
+				end
+			%>
+		</div>
+		<div id="author-info">
+			<p><strong>Homepage:</strong><br /><%= link_to @list.user.homepage, "#{@list.user.homepage}", :rel => 'nofollow' unless @list.user.homepage.blank?%></p>
+			<p><strong>Bio:</strong><br /><%= @list.user.bio unless @list.user.bio.blank?%></p>
+
+			<% if @list.owned_by? current_user %>
+  				<p><%= link_to 'Edit Profile', edit_user_registration_path %></p>
+			<% end %>
+		</div>	
+</div>
+
+
